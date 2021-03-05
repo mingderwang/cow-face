@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
+import tw from 'twin.macro'
+import { Button, Logo } from './components'
 
-function App() {
-  const [count, setCount] = useState(0);
+interface AppProps {}
 
-  useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-      </header>
+const App = ({}: AppProps) => (
+  <div
+    css={[
+      tw`flex flex-col items-center justify-center h-screen`,
+      tw`bg-gradient-to-b from-electric to-ribbon`,
+    ]}
+  >
+    <div tw="flex flex-col justify-center h-full space-y-5">
+      <Button isPrimary>Submit</Button>
+      <Button isSecondary>Cancel</Button>
+      <Button isSmall>Close</Button>
     </div>
-  );
-}
+    <Logo />
+  </div>
+)
 
-export default App;
+export default App
